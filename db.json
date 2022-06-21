@@ -1,0 +1,26 @@
+{
+  "classeList": [
+    {
+      "nomClasse": "terminal S2",
+      "niveau": "RDC",
+      "capacite": 40,
+      "id": 3
+    },
+    {
+      "nomClasse": "Terminal L1",
+      "niveau": "RDC",
+      "capacite": 80,
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title> {{titleDialog}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="classForm" >
+    <mat-form-field appearance="legacy">
+        <mat-label>Nom Classe</mat-label>
+        <input formControlName="nomClasse" matInput placeholder="Nom Classe">
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Niveau</mat-label>
+      <input formControlName="niveau" matInput placeholder="Niveau">
+  </mat-form-field>
+  <mat-form-field appearance="legacy">
+    <mat-label>Capacité Accueil</mat-label>
+    <input formControlName="capacite" matInput type="number" placeholder="Capacite">
+</mat-form-field>
+    
+  </form>
+  
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close=""> Fermer</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary"(click)="addClasse()"> {{actionBtn}}</button>
+</div>

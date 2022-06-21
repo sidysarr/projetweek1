@@ -1,0 +1,48 @@
+<mat-toolbar>
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+    {{title}}
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav">
+
+        <img class="avatar mat-elevation-z8" src="\assets\image\sidy_sarr.jpg">
+        <h4 class="name"> Sidy SARR</h4>
+        <p class="designation"> Devellopeur Web</p>
+        
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" routerLink="/home" >
+            <mat-icon>home</mat-icon>
+            <span>Acceuil</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/eleves" >
+            <mat-icon>person</mat-icon>
+            <span>Eleves</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/classes" >
+            <mat-icon>school</mat-icon>
+            <span>Classes</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/cours">
+            <mat-icon>work</mat-icon>
+            <span>Cours</span>
+        </button>
+
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button"  routerLink="/apropos">
+            <mat-icon>help</mat-icon>
+            <span>Apropos</span>
+        </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z4">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
