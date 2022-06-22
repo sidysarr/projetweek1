@@ -3,7 +3,7 @@
     {
       "nomClasse": "terminal S2",
       "niveau": "RDC",
-      "capacite": 40,
+      "capacite": 41,
       "id": 3
     },
     {
@@ -11,16 +11,24 @@
       "niveau": "RDC",
       "capacite": 80,
       "id": 5
-    }
-  ],
-  "comments": [
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "nomClasse": "Premiere L2",
+      "niveau": "RDC",
+      "capacite": 60,
+      "id": 6
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "eleveList": [
+    {
+      "nomEleve": "SARR",
+      "prenomEleve": "sidy",
+      "dateNais": "1995-03-10T00:00:00.000Z",
+      "lieuNais": "kheune",
+      "sexe": "M",
+      "classe": "5",
+      "id": 1
+    }
+  ],
+  "courList": []
 }

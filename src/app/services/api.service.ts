@@ -19,4 +19,17 @@ export class ApiService {
   deleteClasse(id : number){
     return this.http.delete<any>("http://localhost:3000/classeList/"+id )
   }
+
+  postEleve(data : any){
+    return this.http.post<any>("http://localhost:3000/eleveList",data);
+  }
+  getEleve(){
+    return  this.http.get<any>("http://localhost:3000/eleveList")
+  }
+  putEleve(data:any,id : number){
+    return this.http.put<any>("http://localhost:3000/eleveList/"+id ,data)
+  }
+  deleteEleve(id : number){
+    return this.http.delete<any>("http://localhost:3000/eleveList/"+id )
+  }
 }

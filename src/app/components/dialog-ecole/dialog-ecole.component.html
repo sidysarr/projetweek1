@@ -1,1 +1,47 @@
-<p>dialog-ecole works!</p>
+<h1 mat-dialog-title> {{titleDialog}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="eleveForm" >
+    <mat-form-field appearance="outline">
+        <mat-label>Nom Eleve</mat-label>
+        <input formControlName="nomEleve" matInput placeholder="Nom Eleve">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Prenom Eleve</mat-label>
+      <input formControlName="prenomEleve" matInput placeholder="Prenom Eleve">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Choisir une date</mat-label>
+    <input  formControlName="dateNais" matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline">
+      <mat-label>Lieu de Naissance</mat-label>
+      <input formControlName="lieuNais" matInput placeholder="Date de Naissance">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Sexe</mat-label>
+    <mat-select  formControlName="sexe" placeholder="Sexe">
+      <mat-option value="M">M</mat-option>
+      <mat-option value="F">F</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Classe</mat-label>
+    <mat-select  formControlName="classe" placeholder="classe">
+      <mat-option *ngFor="let cl of allClasse" value="{{cl.id}}">{{cl.nomClasse}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+
+    
+  </form>
+  
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close=""> Fermer</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary"(click)="addEleve()"> {{actionBtn}}</button>
+</div>
