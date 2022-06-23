@@ -32,4 +32,7 @@ export class ApiService {
   deleteEleve(id : number){
     return this.http.delete<any>("http://localhost:3000/eleveList/"+id )
   }
+  getElevecl(){
+    return  this.http.get<any>("http://localhost:3000/eleveList?_expand=classeList")
+  }
 }

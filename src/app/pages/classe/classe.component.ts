@@ -24,6 +24,7 @@ export class ClasseComponent implements OnInit {
     this.getAllClasse();
   }
   
+ 
   
   getAllClasse(){
     this.api.getClasse()

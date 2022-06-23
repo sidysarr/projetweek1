@@ -17,7 +17,6 @@ export class EleveComponent implements OnInit {
   title = "Gestion des eleves";
   displayedColumns: string[] = ['id', 'nomEleve','prenomEleve', 'dateNais', 'lieuNais', 'sexe', 'classe','action'];
   dataSource!: MatTableDataSource<any>;
- 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -27,9 +26,10 @@ export class EleveComponent implements OnInit {
     this.getAllEleve();
   }
   
+ 
   
   getAllEleve(){
-    this.api.getEleve()
+    this.api.getElevecl()
     .subscribe({
       next:(res)=>{
         this.dataSource = new MatTableDataSource(res);
