@@ -35,4 +35,17 @@ export class ApiService {
   getElevecl(){
     return  this.http.get<any>("http://localhost:3000/eleveList?_expand=classeList")
   }
+
+  postCours(data : any){
+    return this.http.post<any>("http://localhost:3000/coursList",data);
+  }
+  getCours(){
+    return  this.http.get<any>("http://localhost:3000/coursList")
+  }
+  putCours(data:any,id : number){
+    return this.http.put<any>("http://localhost:3000/coursList/"+id ,data)
+  }
+  deleteCours(id : number){
+    return this.http.delete<any>("http://localhost:3000/coursList/"+id )
+  }
 }

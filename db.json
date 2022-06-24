@@ -28,7 +28,29 @@
       "sexe": "M",
       "classe": "5",
       "id": 1
+    },
+    {
+      "nomEleve": "FALL",
+      "prenomEleve": "Alioune",
+      "dateNais": "2022-06-13T00:00:00.000Z",
+      "lieuNais": "dakar",
+      "sexe": "M",
+      "classe": "5",
+      "id": 2
     }
   ],
-  "courList": []
+  "coursList": [
+    {
+      "nomCours": "hg",
+      "volumeHoraire": 23,
+      "classe": "5",
+      "id": 1
+    },
+    {
+      "nomCours": "Physique et chimie",
+      "volumeHoraire": 40,
+      "classe": "3",
+      "id": 2
+    }
+  ]
 }

@@ -10,6 +10,8 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DialogEcoleComponent implements OnInit {
   
+
+
   allClasse: any[] = [];
   eleveForm !: FormGroup;
   actionBtn : string = "Enregistrer" ;
@@ -95,5 +97,6 @@ export class DialogEcoleComponent implements OnInit {
      
    })
  }
+
 
 }

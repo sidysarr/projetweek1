@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from'@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
+import { DialogEcoleComponent } from '../dialog-ecole/dialog-ecole.component';
 
 @Component({
   selector: 'app-dialog-cour',
@@ -10,37 +11,32 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DialogCourComponent implements OnInit {
 
+  
+
   allClasse: any[] = [];
-  eleveForm !: FormGroup;
+  coursForm !: FormGroup;
   actionBtn : string = "Enregistrer" ;
-  titleDialog : string = "Ajouter Eleve";
+  titleDialog : string = "Ajouter Cours";
   
   constructor(private formBuilder : FormBuilder,
      private api : ApiService,
      @Inject(MAT_DIALOG_DATA) public editData : any,
-     private dialogRef : MatDialogRef<DialogCourComponent>) { }
+     private dialogRef : MatDialogRef<DialogEcoleComponent>) { }
 
   ngOnInit(): void {
    this.getAllClasse();
-    this.eleveForm = this.formBuilder.group({
-      nomEleve : ['',Validators.required],   
-      prenomEleve : ['',Validators.required],
-      dateNais : ['',Validators.required],
-      lieuNais : ['',Validators.required],   
-      sexe : ['',Validators.required],
+    this.coursForm = this.formBuilder.group({
+      nomCours : ['',Validators.required],   
+      volumeHoraire : ['',Validators.required],
       classe : ['',Validators.required]
     });
 
     if(this.editData){
       this.actionBtn = "Modifier";
       
-      this.eleveForm.controls['nomEleve'].setValue(this.editData.nomEleve);
-      this.eleveForm.controls['prenomEleve'].setValue(this.editData.prenomEleve);   
-      this.eleveForm.controls['dateNais'].setValue(this.editData.dateNais);
-      
-      this.eleveForm.controls['lieuNais'].setValue(this.editData.lieuNais);
-      this.eleveForm.controls['sexe'].setValue(this.editData.sexe);   
-      this.eleveForm.controls['classe'].setValue(this.editData.classe);
+      this.coursForm.controls['nomCours'].setValue(this.editData.nomCours);
+      this.coursForm.controls['volumeHoraire'].setValue(this.editData.volumeHoraire);   
+      this.coursForm.controls['classe'].setValue(this.editData.classe);
 
     }
   }
@@ -56,15 +52,15 @@ export class DialogCourComponent implements OnInit {
        
     })
   }
-  addEleve(){
+  addCours(){
     if(!this.editData){
       
-    if(this.eleveForm.valid){
-      this.api.postEleve(this.eleveForm.value)
+    if(this.coursForm.valid){
+      this.api.postCours(this.coursForm.value)
       .subscribe({
         next:(res)=>{
-          alert('Eleve ajouter avec succes');
-          this.eleveForm.reset();
+          alert('Cours ajouter avec succes');
+          this.coursForm.reset();
           this.dialogRef.close('enregistrer');
         },
         error:()=>{
@@ -75,17 +71,17 @@ export class DialogCourComponent implements OnInit {
     }
       
     }else{
-      this.updateEleve();
+      this.updateCours();
     }
 
   }
 
-  updateEleve(){
-    this.api.putEleve(this.eleveForm.value,this.editData.id)
+  updateCours(){
+    this.api.putCours(this.coursForm.value,this.editData.id)
     .subscribe({
      next:(res)=>{
-       alert('Eleve modifier avec succes');
-       this.eleveForm.reset();
+       alert('Cours modifier avec succes');
+       this.coursForm.reset();
        this.dialogRef.close('modifier');
        
      },

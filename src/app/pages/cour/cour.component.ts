@@ -1,11 +1,11 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import { DialogClasseComponent } from 'src/app/components/dialog-classe/dialog-classe.component';
 import { ApiService } from 'src/app/services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { DialogEcoleComponent } from 'src/app/components/dialog-ecole/dialog-ecole.component';
+import { DialogCourComponent } from 'src/app/components/dialog-cour/dialog-cour.component';
 
 @Component({
   selector: 'app-cour',
@@ -14,8 +14,8 @@ import { DialogEcoleComponent } from 'src/app/components/dialog-ecole/dialog-eco
 })
 export class CourComponent implements OnInit {
 
-  title = "Gestion des eleves";
-  displayedColumns: string[] = ['id', 'nomEleve','prenomEleve', 'dateNais', 'lieuNais', 'sexe', 'classe','action'];
+  title = "Gestion des Cours";
+  displayedColumns: string[] = ['id', 'nomCours','volumeHoraire', 'classe','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -23,13 +23,13 @@ export class CourComponent implements OnInit {
   constructor(private dialog : MatDialog,private api : ApiService) { }
 
   ngOnInit(): void {
-    this.getAllEleve();
+    this.getAllCours();
   }
   
  
   
-  getAllEleve(){
-    this.api.getElevecl()
+  getAllCours(){
+    this.api.getCours()
     .subscribe({
       next:(res)=>{
         this.dataSource = new MatTableDataSource(res);
@@ -43,23 +43,23 @@ export class CourComponent implements OnInit {
     })
   }
 
-  editEleve(row : any){
-    this.dialog.open(DialogEcoleComponent,{
+  editCours(row : any){
+    this.dialog.open(DialogCourComponent,{
       width: '30%',
       data:row
     }).afterClosed().subscribe(val=>{
       if(val==='modifier'){
-        this.getAllEleve();
+        this.getAllCours();
       }
     })
   }
 
-  deleteEleve(id : number){
-    this.api.deleteEleve(id)
+  deleteCours(id : number){
+    this.api.deleteCours(id)
     .subscribe({
       next:(res)=>{
-       alert("Eleve supprimée avec succees")
-       this.getAllEleve();
+       alert("Cours supprimée avec succees")
+       this.getAllCours();
       },
       error:()=>{
         alert('Erreur')
@@ -76,11 +76,11 @@ export class CourComponent implements OnInit {
     }
   }
   openDialog() {
-    this.dialog.open(DialogEcoleComponent, {
+    this.dialog.open(DialogCourComponent, {
      width : '30%'
     }).afterClosed().subscribe(val=>{
       if(val==='enregistrer'){
-        this.getAllEleve();
+        this.getAllCours();
       }
     })
   }
